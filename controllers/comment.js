@@ -30,7 +30,7 @@ export const addComment = (req, res) => {
 };
 
 export const updateComment = (req, res) => {
-    const commentId = req.params.commentId;
+    const commentId = req.params.id;
     const { content } = req.body;
 
     if (!content) {
@@ -48,7 +48,7 @@ export const updateComment = (req, res) => {
 };
 
 export const deleteComment = (req, res) => {
-    const commentId = req.params.commentId;
+    const commentId = req.params.id;
     const q = "DELETE FROM comments WHERE `id` = ? AND `user_id` = ?";
 
     db.query(q, [commentId, userInfo.id], (err, data) => {
