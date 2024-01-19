@@ -1,5 +1,4 @@
 import { db } from "../db.js";
-import jwt from "jsonwebtoken";
 
 export const getPosts = (req, res) => {
   const q = req.query.cat
@@ -12,6 +11,18 @@ export const getPosts = (req, res) => {
     return res.status(200).json(data);
   });
 };
+
+
+export const getAllPosts = (req, res) => {
+  const q = "SELECT * FROM posts";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    return res.status(200).json(data);
+  });
+};
+
 
 export const getPost = (req, res) => {
   const q =
